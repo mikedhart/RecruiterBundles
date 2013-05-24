@@ -1,0 +1,10 @@
+Recruiter\CommonBundle\Entity\Upload:
+    properties:
+        file:
+            - File:
+                maxSize: 2000000
+                mimeTypes:       
+                    - 'image/jpg'
+                    - 'image/jpeg'
+                    - 'image/png'
+                    - 'application/pdf'       

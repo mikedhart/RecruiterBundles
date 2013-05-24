@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Pricing{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset("bundles/recruiterpages/css/main.css") }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+<div class="container main">
+	<div class="row">
+		<div class="span12 focus-image">
+			<a href="{{ path('fos_user_registration_register') }}">
+				<h1 class="image-pricing">Pricing</h1>
+			</a>
+		</div><!-- span12 -->
+	</div><!-- row -->
+</div><!-- container main -->
+
+{% endblock %}

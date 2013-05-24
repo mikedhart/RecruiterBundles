@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('bundles/recruitercommon/css/components.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('bundles/recruitercommon/js/profile.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+{% include "RecruiterCommonBundle:Default:profile_content.html.twig" %}
+
+{% endblock %}

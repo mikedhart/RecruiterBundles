@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Creatives R Us</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/recruitercommon/css/bootstrap.min.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/recruitercommon/css/main.css') }}" />
+
+	{% block stylesheets %}{% endblock %}
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="span6">
+					<h1>
+						<a href="/">Creatives R Us</a>
+					</h1>
+				</div><!-- span6 -->
+				
+				{% if app.user == null %}
+					<div class="span3 visible-desktop">
+						<form class="crus-form form" id="login_employer" method="post" action="{{ path('fos_user_security_check') }}">
+	                        <fieldset>
+	                            <legend class="strong large"><span class="orange">CANDIDATE</span> Login</legend>
+	                            <input type="text" name="_username" />
+	                            <a href="javascript: $('#login_employer').submit();">GO</a>
+	                            <input type="password" name="_password" />
+	                            <p class="small"><a href="#" class="login_password_forgot">Forgot your password?</a></p>
+	                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+	                        </fieldset>
+						</form>
+					</div><!-- span4 -->
+					<div class="span3 visible-desktop">
+						<form class="crus-form form" id="login_freelancer" method="post" action="{{ path('fos_user_security_check') }}">
+	                        <fieldset>
+	                            <legend class="strong large"><span class="orange">EMPLOYER</span> Login</legend>
+	                            <input type="text" name="_username" />
+	                            <a href="javascript: $('#login_freelancer').submit();">GO</a>
+	                            <input type="password" name="_password" />
+	                            <p class="small"><a href="#" class="login_password_forgot">Forgot your password?</a></p>
+	                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+	                        </fieldset>
+						</form>
+					</div><!-- span3 -->
+				{% endif %}
+			</div><!-- row -->
+			<div class="row">
+				<div class="span12">
+					<ul class="crus-nav">
+						{% if app.user %}
+							<li><a href="{{ path('recruiter_admin_panel_homepage') }}" class="crus-btn">home</a></li>
+							<li><a href="{{ path('recruit') }}" class="crus-btn">freelancers</a></li>
+							<li><a href="{{ path('employers') }}" class="crus-btn">employers</a></li>
+							<li><a href="{{ path('fos_user_security_logout') }}" class="crus-btn">logout</a></li>
+						{% endif %}
+					</ul>
+				</div><!-- span12 -->
+			</div><!-- row -->
+			<div class="row">
+				<div class="span12">
+					{% for flashMessage in app.session.flashbag.get('notice') %}
+		                <div class="alert alert-notice">
+		                    <strong>Notice!</strong> {{ flashMessage }}
+		                </div>
+		            {% endfor %}
+		            {% for flashMessage in app.session.flashbag.get('error') %}
+		                <div class="alert alert-error">
+		                    <strong>Error!</strong> {{ flashMessage }}
+		                </div>
+		            {% endfor %}
+		            {% for flashMessage in app.session.flashbag.get('success') %}
+		                <div class="alert alert-success">
+		                    <strong>Success!</strong> {{ flashMessage }}
+		                </div>
+		            {% endfor %}
+	            </div><!-- span12 -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</header>
+	{% block body %}{% endblock %}
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="span8">
+					<h4>Jobs We Recruit For</h4>
+				</div><!-- span8-->
+				<div class="span4 follow">
+					<a href="#"><img src="{{ asset('bundles/recruiterpages/images/linkedin.png') }}" alt="Linked In" /></a>
+					<a href="#"><img src="{{ asset('bundles/recruiterpages/images/blogger.png') }}" alt="Blogger" /></a>
+					<a href="#"><img src="{{ asset('bundles/recruiterpages/images/twitter.png') }}" alt="Twitter" /></a>
+					<a href="#"><img src="{{ asset('bundles/recruiterpages/images/facebook.png') }}" alt="Facebook" /></a>
+					<a href="#"><img src="{{ asset('bundles/recruiterpages/images/wordpress.png') }}" alt="Word Press" /></a>
+					<span class="large">Follow</span>
+				</div><!-- span4 -->
+			</div><!-- row -->
+			<div class="row">
+				<div class="span3">
+					<ul>
+						<li><a href="#">3D Design Experts</a></li>
+						<li><a href="#">Account Managers</a></li>
+						<li><a href="#">Art Directors</a></li>
+						<li><a href="#">Art Workers</a></li>
+					</ul>
+				</div><!-- span3 -->
+				<div class="span3">
+					<ul>
+						<li><a href="#">CMS Specialists</a></li>
+						<li><a href="#">Copyrighters</a></li>
+						<li><a href="#">Creative Artworkers</a></li>
+						<li><a href="#">Flash Actionscript Specialists</a></li>
+					</ul>
+				</div><!-- span3 -->
+				<div class="span3">
+					<ul>
+						<li><a href="#">Flash Designers</a></li>
+						<li><a href="#">Graphic Designers</a></li>
+						<li><a href="#">Motion Graphics Animators</a></li>
+						<li><a href="#">Packaging Designers</a></li>
+					</ul>
+				</div><!-- span3 -->
+				<div class="span3">
+					<ul>
+						<li><a href="#">Print Designers</a></li>
+						<li><a href="#">QuarkExpress Experts</a></li>
+						<li><a href="#">Studio Managers</a></li>
+						<li><a href="#">Web Designers</a></li>
+					</ul>
+				</div><!-- span3 -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</footer>
+    
+    <script src="{{ asset('bundles/recruitercommon/js/jq/jq.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/recruitercommon/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="{{ asset("bundles/recruiteradminpanel/js/app.js") }}">
+    
+	{% block javascripts %}{% endblock %}
+	
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#crusCarousel").carousel();
+        });
+    </script>
+</body>
+</html>

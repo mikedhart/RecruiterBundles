@@ -1,0 +1,54 @@
+{% extends 'RecruiterAdminPanelBundle::layout.html.twig' %}
+
+{% block body %}
+
+<div class="container main">
+	<div class="row">
+		<div class="span12">
+			<h1>{{ entity.employername }}</h1>
+			
+			<table class="table">
+			    <tbody>
+			        <tr>
+			            <th>Id</th>
+			            <td>{{ entity.id }}</td>
+			        </tr>
+			        <tr>
+			            <th>Name</th>
+			            <td>{{ entity.employername }}</td>
+			        </tr>
+			        <tr>
+			            <th>Description</th>
+			            <td>{% if entity.employerdescription %}{{ entity.employerdescription }}{% else %}No description{% endif %}</td>
+			        </tr>
+			        <tr>
+			            <th>Subscription Activation Date</th>
+			            <td>
+			            	{% if entity.employersubscriptionactivationdate %}{{ entity.employersubscriptionactivationdate|date }}{% else %}Not activated{% endif %}
+			            	<form class="form" action="{{ path('employers_extend', { 'id': entity.id }) }}" method="post">
+					            <button title="This will set the subscription activation date to today, therefore increasing the subscription." class="btn tips" type="submit">Extend Subscription</button>
+					        </form>
+			            </td>
+			        </tr>
+			        <tr>
+			            <th>Location</th>
+			            <td>{% if entity.location %}{{ entity.location|date }}{% else %}No location set{% endif %}</td>
+			        </tr>
+			    </tbody>
+			</table>
+
+			<div class="btn-group pull-left">
+				<a class="btn" href="{{ path('employers_edit', { 'id': entity.id }) }}">
+		            Edit
+		        </a>
+	        </div><!-- btn-group -->
+	        
+	        <form action="{{ path('employers_delete', { 'id': entity.id }) }}" method="post">
+	            {{ form_widget(delete_form) }}
+	            <button class="btn btn-danger pull-right" type="submit">Delete</button>
+	        </form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

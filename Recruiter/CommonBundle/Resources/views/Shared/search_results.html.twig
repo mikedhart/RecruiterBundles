@@ -1,0 +1,30 @@
+<div class="container main">
+	<div class="row">
+		<div class="span12">
+			<h1>Search Results</h1>
+			
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Location</th>
+						<th>Job Title</th>
+						<th>View Profile</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for recruit in recruits %}
+						<tr>
+							<td>{{ recruit.user.firstname }} {{ recruit.user.lastname }}</td>
+							<td>{{ recruit.location.district }}</td>
+							<td>{{ recruit.recruitjobtitle }}</td>
+							<td><a target="_blank" href="{{ path("recruiter_recruit_homepage", {id: recruit.id}) }}" title="View profile" class="btn">Profile</a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table><!-- table -->
+			
+			<a href="{% if app.user.hasrole('ROLE_ADMIN') %}{{ path("recruit_search") }}{% else %}{{ path("recruiter_employer_homepage") }}{% endif %}" class="crus-btn">Start New Search</a>
+		</div><!-- span12 -->
+	</div><!-- row -->
+</div><!-- container -->

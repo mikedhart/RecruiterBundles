@@ -1,0 +1,20 @@
+<div class="well">
+	<ul class="nav nav-list">
+		<li class="nav-header">Operations</li>
+		<li {% if path(app.request.attributes.get('_route')) == path('employers') %} class="active"{% endif %}>
+	        <a href="{{ path('employers') }}">
+	            Employer Panel
+	        </a>
+	    </li>
+	    <li {% if path(app.request.attributes.get('_route')) == path('employers_search') %} class="active"{% endif %}>
+	        <a href="#search-employer-modal" role="button" data-toggle="modal">
+	            Search Employers
+	        </a>
+	    </li>
+	    <li {% if path(app.request.attributes.get('_route')) == path('employers_export') %} class="active"{% endif %}>
+	        <a href="{{ path('employers_export') }}">
+	            Export Employers
+	        </a>
+	    </li>
+	</ul>
+</div><!-- well -->

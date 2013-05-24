@@ -1,0 +1,7 @@
+parameters:
+#    recruiter_pages.example.class: Recruiter\PagesBundle\Example
+
+services:
+#    recruiter_pages.example:
+#        class: %recruiter_pages.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

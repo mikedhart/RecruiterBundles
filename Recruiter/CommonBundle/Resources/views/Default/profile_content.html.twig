@@ -1,0 +1,135 @@
+<div class="modal hide fade" id="profile-modal">
+	<div class="modal-header">
+		
+	</div><!-- modal-header -->
+	<div class="modal-body">
+		
+	</div><!-- modal-body -->
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+		<a href="#" class="btn btn-primary submit">Save</a>
+	</div><!-- modal-footer -->
+</div><!-- modal hide -->
+
+<div class="container main">
+	<div class="row">
+		<div class="span4 details-recruit">
+			<div class="panel-header">
+				Name: {{ page.recruit.user }}
+				{% 
+					include 'RecruiterCommonBundle:Helpers:edit_option.html.twig' 
+					with {ajax : true, title : 'Edit Details', route : path('recruiter_recruit_edit', {id : page.recruit.id})} 
+				%}
+			</div><!-- panel-header -->
+			<div class="panel-body" style="max-height: none;">
+				{% if page.owner %}<a href="{{ path('recruiter_common_upload', {mode : "recruit", type : "profile_picture", id : page.recruit.id}) }}" title="Upload Profile Picture" class="trigger-input">{% endif %}
+					<img 	src="{% if profile_picture %}{{ profile_picture.webpath }}{% else %}{{ asset('bundles/recruitercommon/images/user-uploadapic.png') }}{% endif %}" 
+							alt="No Profile Picture" />
+				{% if page.owner %}</a>{% endif %}
+				
+				<div class="clear"></div><!-- clear -->
+				
+				<dl>
+					<dt>Email</dt>
+					<dd>{{ page.recruit.user.email }}</dd>
+					<dt>Phone</dt>
+					<dd>{% if page.recruit.recruitphonenumber %}{{ page.recruit.recruitphonenumber }}{% else %}Not set{% endif %}</dd>
+					<dt>Joined on</dt>
+					<dd>{{ page.recruit.recruitcreatedat|date('Y-m-d') }}</dd>
+					<dt>Last seen</dt>
+					<dd>{{ page.recruit.user.lastlogin|date('Y-m-d') }}</dd>
+					<dt>Gender</dt>
+					<dd>{% if page.recruit.recruitgender %}{{ page.recruit.recruitgender }}{% else %}Not set{% endif %}</dd>
+					<dt>D.O.B</dt>
+					<dd>{% if page.recruit.recruitdob %}{{ page.recruit.recruitdob|date('Y-m-d') }}{% else %}Not set{% endif %}</dd>
+					<dt>
+						<img src="{{ asset('bundles/recruitercommon/images/icons/small/acrobat.png') }}" alt="PDF" />
+					
+						{% 
+							include 'RecruiterCommonBundle:Helpers:edit_option.html.twig' 
+							with {ajax : true, title : 'Upload CV', route : path('recruiter_common_upload', {mode : "recruit", type : "cv"})} 
+						%}
+						CV
+					</dt>
+					<dd>{% if current_cv %}<a href="{{ current_cv.webpath }}">Download</a>{% else %}Not set{% endif %}</dd>
+					<dt>Edu. status</dt>
+					<dd>{% if page.recruit.educationstatus %}{{ page.recruit.educationstatus }}{% else %}Not set{% endif %}</dd>
+					<dt>Location</dt>
+					<dd>{% if page.recruit.location %}{{ page.recruit.location }}{% else %}Not set{% endif %}</dd>
+					{% if app.user.hasrole("ROLE_ADMIN") %}
+						<dt>Delete Account</dt>
+						<dd>
+							<form action="{{ path('recruit_delete', { 'id': page.recruit.id }) }}" method="post">
+	            				{{ form_widget(delete_form) }}
+		            			<button class="btn btn-danger" type="submit">Delete</button>
+							</form>
+						</dd>
+					{% endif %}
+					<dt>Log out</dt>
+					<dd><a href="{{ path("fos_user_security_logout") }}" title="Log out">Log out</a></dd>
+				</dl>
+				
+				<div class="clear"></div>
+			</div><!-- panel-body -->
+		</div><!-- span4 -->
+		
+		<div class="span4">
+			<div class="panel-header">
+				Personal Statement
+				
+				{% 
+					include 'RecruiterCommonBundle:Helpers:edit_option.html.twig' 
+					with {ajax : true, title : 'Edit Personal Statement', route : path('recruiter_recruit_edit', {id : page.recruit.id})} 
+				%}
+			</div><!-- panel-header -->
+			<div class="panel-body">
+				{{ page.recruit.recruitpersonalstatement|raw }}
+			</div><!-- panel-body -->
+		</div><!-- span4 -->
+		
+		{% for component in page.data %}
+			<div class="span4">
+				<div class="panel-header">
+					{{ component.title }}
+						{% 
+							include 'RecruiterCommonBundle:Helpers:edit_option.html.twig' 
+							with {title : 'Upload CV', route : "/recruits/" ~ page.recruit.id ~ "/edit/" ~ component.editroute, ajax : false} 
+						%}
+				</div><!-- panel-header -->
+				
+				<div class="panel-body">
+					<ul>
+						{% for item in component.collection %}
+							<li>{{ item }}</li>
+						{% else %}
+							<li>No items</li>
+						{% endfor %}
+					</ul>
+				</div><!-- panel-body -->
+			</div><!-- span4 -->
+		{% endfor %}
+		<div class="span4">
+			<div class="panel-header">
+				Portfolio
+				{% 
+					include 'RecruiterCommonBundle:Helpers:edit_option.html.twig' 
+					with {title : 'Portfolio', route : path('recruiter_recruit_portfolio_homepage', {id : page.recruit.id}), ajax : false} 
+				%}
+			</div><!-- panel-header -->
+			
+			<div class="panel-body">
+				<ul>
+					{% for entry in page.portfolio %}
+						{% if entry.portfolioitemfilename %}
+							<li><a href="{{ entry.webpath }}" target="_blank">{{ entry }}</a></li>
+						{% elseif entry.portfolioitemhref %}
+							<li><a href="{% if 'http' not in entry.portfolioitemhref %}http://{% endif %}{{ entry.portfolioitemhref }}" target="_blank">{{ entry }}</a></li>
+						{% endif %}
+					{% else %}
+						<li>No items</li>
+					{% endfor %}
+				</ul>
+			</div><!-- panel-body -->
+		</div><!-- span4 -->
+	</div><!-- row -->
+</div><!-- container -->

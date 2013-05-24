@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Freelancers{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset("bundles/recruiterpages/css/main.css") }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+<div class="container main">
+	<div class="row">
+		<div class="span12 focus-image">
+			<a href="{{ path('fos_user_registration_register') }}">
+				<h1 class="image-freelancers">Freelancers</h1>
+			</a>
+		</div><!-- span12 -->
+	</div><!-- row -->
+	<div class="row">
+		<div class="span1"></div>
+		<div class="span10 text">
+			<ul class="freelancers">
+				<li>Upload your CV (up to 2mb)</li>
+				<li>Attach your portfolio</li>
+				<li>Upload a photo</li>
+				<li>Describe your key specialism in the section provided</li>
+				<li>Provide contact details</li>
+				<li>Keep your profile up-to-date</li>
+			</ul>
+		</div><!-- span10 -->
+		<div class="span1"></div>
+	</div><!-- row -->
+</div><!-- container main -->
+
+{% endblock %}

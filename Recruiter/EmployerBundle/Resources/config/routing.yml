@@ -1,0 +1,16 @@
+recruiter_employer_homepage:
+    pattern:  /home
+    defaults: { _controller: RecruiterEmployerBundle:Default:index }
+
+recruiter_employer_search:
+    pattern:  /search
+    defaults: { _controller: RecruiterEmployerBundle:Default:search }
+    
+recruiter_employer_new:
+    pattern:  /new
+    defaults: { _controller: RecruiterEmployerBundle:Default:new }
+
+recruiter_employer_pay:
+    pattern:  /pay
+    defaults: { _controller: RecruiterEmployerBundle:Default:pay }
+    

@@ -1,0 +1,73 @@
+<div class="container main">
+	<div class="row">
+		<div class="span12">
+			<h1>Find a Freelancer</h1>
+			
+			<form class="form form-horizontal" method="post" action="{% if app.user.hasrole('ROLE_EMPLOYER') %}{{ path('recruiter_employer_search') }}{% endif %}">
+				{# <fieldset>
+					<legend>Job Title</legend>
+					
+					<div class="control-group">
+						<label class="control-label" for="job_title">Job title</label>
+						
+						<div class="controls">
+							<input type="text" placeholder="Enter key words" name="job_title" id="job_title" />
+						</div><!-- controls -->
+					</div><!-- control-group -->
+				</fieldset> #}
+				<fieldset>
+					<legend>Skills</legend>
+					
+					<div class="columns">
+						{% for skill in skills %}
+							<div class="control-group">
+								<label class="control-label" for="skill_{{ skill.id }}">{{ skill.skillname }}</label>
+								<div class="controls">
+									<input type="checkbox" id="skill_{{ skill.id }}" name="skill[{{ skill.id }}]" />
+								</div><!-- controls -->
+							</div><!-- control-group -->
+						{% endfor %}
+					</div><!-- columns -->
+				</fieldset>
+				<fieldset>
+					<legend>Job Types</legend>
+					
+					<div class="columns">
+						{% for job_type in job_types %}
+							<div class="control-group">
+								<label class="control-label" for="job_type_{{ job_type.id }}">{{ job_type.jobtypename }}</label>
+								<div class="controls">
+									<input type="checkbox" id="job_type_{{ job_type.id }}" name="job_type[{{ job_type.id }}]" />
+								</div><!-- controls -->
+							</div><!-- control-group -->
+						{% endfor %}
+					</div><!-- columns -->
+				</fieldset>
+				<fieldset>
+					<legend>Location</legend>
+					
+					<div class="control-group">
+						<label class="control-label" for="location">Location</label>
+						
+						<div class="controls">
+							<select name="location" id="location">
+								<option value="null">Any</option>
+								
+								{% for location in locations %}
+									<option value="{{ location.id }}">{{ location.district }}</option>
+								{% endfor %}
+							</select>
+						</div><!-- controls -->
+					</div><!-- control-group -->
+				</fieldset>
+				
+				<input type="submit" class="crus-btn" value="Search" />
+			</form><!-- form -->
+		</div><!-- span12 -->
+	</div><!-- row -->
+	<div class="row">
+		<div class="span12">
+			<a href="{{ path("fos_user_security_logout") }}">Logout</a>
+		</div><!-- span12 -->
+	</div><!-- row -->
+</div><!-- container -->

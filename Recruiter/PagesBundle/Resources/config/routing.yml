@@ -1,0 +1,32 @@
+recruiter_pages_homepage:
+    pattern:  /
+    defaults: { _controller: RecruiterPagesBundle:Default:index }
+
+recruiter_pages_about:
+    pattern: /about
+    defaults: {_controller: RecruiterPagesBundle:Default:about}
+    
+recruiter_pages_employers:
+    pattern: /employers
+    defaults: {_controller: RecruiterPagesBundle:Default:employers}
+    
+recruiter_pages_freelancers:
+    pattern: /freelancers
+    defaults: {_controller: RecruiterPagesBundle:Default:freelancers}
+  
+recruiter_pages_pricing:
+    pattern: /pricing
+    defaults: {_controller: RecruiterPagesBundle:Default:pricing}
+    
+recruiter_pages_contact:
+    pattern: /contact
+    defaults: {_controller: RecruiterPagesBundle:Default:contact}
+    
+recruiter_pages_jobs:
+    pattern: /jobs/{name}/
+    defaults: {_controller: RecruiterPagesBundle:Jobs:index}
+    
+recruiter_pages_terms:
+    pattern: /terms-and-conditions
+    defaults: {_controller: RecruiterPagesBundle:Default:terms}
+    

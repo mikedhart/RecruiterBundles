@@ -1,0 +1,42 @@
+{% extends "RecruiterAdminPanelBundle::layout.html.twig" %}
+
+{% block body %}
+
+	{% include "RecruiterEmployerBundle:Employer:search_modal.html.twig" %}
+
+	<div class="container main">
+		<div class="row">
+			<div class="span8">
+				<h1>Latest Employers</h1>
+
+				<table class="table table-striped">
+				    <thead>
+				        <tr>
+				            <th>Name</th>
+				            <th>Subscription Active Date</th>
+				            <th>Actions</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				    {% for entity in entities %}
+				        <tr>
+				            <td>{{ entity.employername }}</td>
+				            <td>{% if entity.employersubscriptionactivationdate %}{{ entity.employersubscriptionactivationdate|date }}{% else %}Not activated{% endif %}</td>
+				            <td>
+				                <div class="btn-group">
+			                        <a class="btn" href="{{ path('employers_show', { 'id': entity.id }) }}">show</a>
+			                        <a class="btn" href="{{ path('employers_edit', { 'id': entity.id }) }}">edit</a>
+				               	</div><!-- btn-group -->
+				            </td>
+				        </tr>
+				    {% endfor %}
+				    </tbody>
+				</table>
+			</div><!-- span8 -->
+			<div class="span4">
+				{% include "RecruiterEmployerBundle:Employer:command.html.twig" %}
+			</div><!-- span4 -->
+		</div><!-- row -->
+	</div><!-- container -->
+{% endblock %}
+				    

@@ -1,0 +1,20 @@
+<div class="modal hide fade" id="search-employer-modal">
+	<div class="modal-header">
+		<h3>Search Employers</h3>
+	</div><!-- modal-header -->
+	<div class="modal-body">
+		<form class="form form-horizontal" method="post" action="{{ path("employers_search") }}" id="form-employer-search">
+			<div class="control-group">
+				<label for="text-employer-search" class="control-label">Employer name:</label>
+				
+				<div class="controls">
+					<input name="employer_search" data-provide="typeahead" data-source='[{{ employer_names|join(",") }}]' autocomplete="off" autofocus="autofocus" type="text" id="text-employer-search" />
+				</div><!-- controls -->
+			</div><!-- control-group -->
+		</form><!-- form -->
+	</div><!-- modal-body -->
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+		<a href="#" onclick="$('#form-employer-search').submit();" class="btn btn-primary submit">Search</a>
+	</div><!-- modal-footer -->
+</div><!-- modal hide -->

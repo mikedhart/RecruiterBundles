@@ -1,0 +1,3 @@
+<form method="post" {{ form_enctype(form) }} action="{{ path('recruiter_common_upload', {type : uploadType, mode : uploadMode, id : id}) }}">
+    {{ form_widget(form) }}
+</form>

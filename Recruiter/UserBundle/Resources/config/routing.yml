@@ -1,0 +1,23 @@
+RecruiterUserBundle_user:
+    resource: "@RecruiterUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+recruiter_user_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: RecruiterUserBundle:Default:index }
+
+recruiter_user_define_role:
+    pattern:  /type
+    defaults: { _controller: RecruiterUserBundle:Default:type }
+    
+recruiter_user_edit:
+    pattern:  /edit
+    defaults: { _controller: RecruiterUserBundle:Default:edit }
+    
+recruiter_user_import:
+    pattern:  /import
+    defaults: { _controller: RecruiterUserBundle:Registration:import }
+    
+recruiter_user_importa:
+    pattern:  /importa
+    defaults: { _controller: RecruiterUserBundle:Default:import }

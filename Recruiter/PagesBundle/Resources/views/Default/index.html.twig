@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Find Your Perfect Freelancer{% endblock %}
+
+{% block body %}
+<div class="container" id="crus-home-main">
+	<div class="row" style="overflow: hidden">
+		<div class="span12" id="home-carousel-wrap">
+			<div class="carousel slide" id="crusCarousel">
+		        <!-- Carousel items -->
+		        <div class="carousel-inner">
+		            <div class="active item">
+		            	<a href="{{ path("recruiter_pages_freelancers") }}">
+		                	<img src="{{ asset('bundles/recruiterpages/images/slides/slide1.png') }}" alt="Slide 1" />
+	                	</a>
+		            </div><!-- item -->
+		            <div class="item">
+		            	<a href="{{ path("recruiter_pages_employers") }}">
+		                	<img src="{{ asset('bundles/recruiterpages/images/slides/slide2.png') }}" alt="Slide 2" />
+	                	</a>
+		            </div><!-- item -->
+		            <div class="item">
+		            	<a href="{{ path("recruiter_pages_about") }}">
+		                	<img src="{{ asset('bundles/recruiterpages/images/slides/slide5.png') }}" alt="Slide 3" />
+	                	</a>
+		            </div><!-- item -->
+		            <div class="item">
+		            	<a href="{{ path("recruiter_pages_pricing") }}">
+		                	<img src="{{ asset('bundles/recruiterpages/images/slides/slide4.png') }}" alt="Slide 4" />
+	                	</a>
+		            </div><!-- item -->
+		        </div><!-- carousel-inner -->
+		        <!-- Carousel nav -->
+		        <a class="carousel-control left" href="#crusCarousel" data-slide="prev">&lsaquo;</a>
+		        <a class="carousel-control right" href="#crusCarousel" data-slide="next">&rsaquo;</a>
+		    </div><!-- jdpCarousel -->
+		</div><!-- span12 -->
+	</div><!-- row -->
+	<div class="row">
+		<div class="span9">
+			<h2>Find Your <span class="orange">Perfect</span> Freelancer</h2>
+			<p class="strong">Creativesrus.com is a leading creative database, connecting jobs with
+			independent professionals without a middle-man.
+			Whether youre on a drive to employ fresh talent or you're a seasoned freelancer
+			looking for a new project, Creativesrus is the best place on the web to be.</p>
+		</div><!-- span10 -->
+		<div class="span3">
+			<img src="{{ asset('bundles/recruiterpages/images/pricetag250.png') }}" alt="Price Tag" />
+		</div>
+	</div><!-- row -->
+</div><!-- container -->
+{% endblock %}

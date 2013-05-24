@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset("bundles/recruiterpages/css/main.css") }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+<div class="container main">
+	<div class="row">
+		<div class="span12 contact-details">
+			<h1>Contact <span class="orange">Creativesrus</span></h1>
+			<a href="mailto:info@creativesrus.com" class="link-email">Email: info@creativesrus.com</a>
+			<a href="#" class="link-phone">Phone: 0161 833 4490</a>
+			<p>Office Address:</p>
+			<p>83 Bridge Street,</p>
+			<p>Manchester,</p>
+			<p>M3 2RF,</p>
+			<p>United Kingdom</p>
+		</div><!-- span12 -->
+	</div><!-- row -->
+	<div class="row">
+		<div class="span12">
+			<p>Creativesrus.com is a trading name of Digitally Sourced Ltd. Company registration no: 8399046</p>
+		</div>
+	</div>
+</div><!-- container main -->
+
+{% endblock %}

@@ -1,0 +1,11 @@
+recruiter_admin_panel_homepage:
+    pattern:  /home
+    defaults: { _controller: RecruiterAdminPanelBundle:Default:index }
+
+RecruiterRecruitBundle_recruit:
+    resource: "@RecruiterRecruitBundle/Resources/config/routing/recruit.yml"
+    prefix:   /recruits
+    
+RecruiterEmployerBundle_employers:
+    resource: "@RecruiterEmployerBundle/Resources/config/routing/employer.yml"
+    prefix:   /employers

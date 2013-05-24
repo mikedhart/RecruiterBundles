@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Employers{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset("bundles/recruiterpages/css/main.css") }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+<div class="container main">
+	<div class="row">
+		<div class="span12 focus-image">
+			<a href="{{ path('fos_user_registration_register') }}">
+				<h1 class="image-employers">Employers</h1>
+			</a>
+		</div><!-- span12 -->
+	</div><!-- row -->
+	<div class="row">
+		<div class="span1"></div>
+		<div class="span10 text">
+			<h3>
+				Simple search and contact function make headhunting easy -
+				browse CVs and portfolios of 1000's of freelancers
+			</h3>
+			<h4>
+				Get unlimited access to thousands of freelancers, fill multiple
+				roles and save cash by cutting out agency middlemen.
+			</h4>
+			<ul>
+				<li>Target specific skill sets without filtered search function</li>
+				<li>Manage company budget more effectively by negotiating your own pay rates</li>
+				<li>Avoid over-staffing to accommodate special projects</li>
+				<li>Cut out costly, time-consuming agency middlemen</li>
+			</ul>
+		</div><!-- span10 -->
+		<div class="span1"></div>
+	</div><!-- row -->
+</div><!-- container main -->
+
+{% endblock %}

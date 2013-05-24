@@ -1,0 +1,23 @@
+parameters:
+#    recruiter_employer.example.class: Recruiter\EmployerBundle\Example
+
+services:
+#    recruiter_employer.example:
+#        class: %recruiter_employer.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    recruiter_common.profilepage:
+        class:        Recruiter\CommonBundle\Services\ProfilePage
+        arguments:    [employer]
+        
+    recruiter_employer.searchhandler:
+        class:        Recruiter\EmployerBundle\Services\SearchHandler
+        scope:        request
+        arguments:    [@security.context, @doctrine.orm.entity_manager, @request]
+    crus_activation_provider:
+        class:        Recruiter\EmployerBundle\Services\ActivationProvider
+        arguments:    [@security.context]
+    paypal_im_received:
+        class: Recruiter\EmployerBundle\Services\PayPalListener
+        arguments: [@doctrine.orm.entity_manager, @security.context]
+        tags:
+            - { name: kernel.event_listener, event: paypal.ipn.receive, method: onIPNReceive }

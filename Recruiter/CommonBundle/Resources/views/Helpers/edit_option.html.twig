@@ -1,0 +1,8 @@
+{% if page.owner %}
+	<a 	href="{{ route }}"
+		title="{{ title }}" {% if ajax == true %}class="trigger-input"{% endif %}>
+		
+		<img 	src="{{ asset('bundles/recruitercommon/images/icons/small/edit.png') }}" 
+				alt="Edit link" />
+	</a>
+{% endif %}

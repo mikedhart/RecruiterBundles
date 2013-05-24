@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="container main">
+	<div class="row">
+		<div class="span12">
+			<h1>Request a New Password</h1>
+			{% block fos_user_content %}
+			{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+			{% endblock fos_user_content %}
+		</div><!-- span12 -->
+	</div><!-- row -->
+</div><!-- container -->
+{% endblock %}

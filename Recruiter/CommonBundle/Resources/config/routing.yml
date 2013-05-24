@@ -1,0 +1,3 @@
+recruiter_common_upload:
+    pattern:  /upload/{mode}/{type}/{id}
+    defaults: { _controller: RecruiterCommonBundle:Default:upload, id: null }

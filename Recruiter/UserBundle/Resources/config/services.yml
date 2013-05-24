@@ -1,0 +1,10 @@
+parameters:
+#    recruiter_user.example.class: Recruiter\UserBundle\Example
+
+services:
+#    recruiter_user.example:
+#        class: %recruiter_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    recruiter_user.handler:
+        class:        Recruiter\UserBundle\Services\Handler
+        arguments:    [@security.context, @doctrine.orm.entity_manager]

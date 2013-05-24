@@ -1,0 +1,42 @@
+employers:
+    pattern:  /
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:index" }
+
+employers_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:show" }
+    
+employers_extend:
+    pattern:  /{id}/extend
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:extend" }
+
+employers_new:
+    pattern:  /new
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:new" }
+
+employers_search:
+    pattern:  /search
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:search" }
+    
+employers_export:
+    pattern:  /export
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:export" }
+    
+employers_create:
+    pattern:  /create
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:create" }
+    requirements: { _method: post }
+
+employers_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:edit" }
+
+employers_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:update" }
+    requirements: { _method: post }
+
+employers_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "RecruiterEmployerBundle:Employer:delete" }
+    requirements: { _method: post }

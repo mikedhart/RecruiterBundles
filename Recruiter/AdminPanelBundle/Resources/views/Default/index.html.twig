@@ -1,0 +1,75 @@
+{% extends "RecruiterAdminPanelBundle::layout.html.twig" %}
+
+{% block body %}
+	<div class="container main">
+		<div class="row">
+			<div class="span12">
+				<h1>Welcome, {{ app.user }}!</h1>
+			</div><!-- span12 -->
+		</div><!-- row -->
+		<div class="row">
+			<div class="span6">
+				<h3>Latest <span class="orange">Freelancers</span></h3>
+				
+				<div class="well">
+					<dl>
+						<dt>Total</dt>
+						<dd>{{ total_recruits }}</dd>
+						<dt>Total this week</dt>
+						<dd>{{ total_recruits_this_week }}</dd>
+					</dl>
+					
+					<div class="clear"></div>
+				</div><!-- well -->
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td>Name</td>
+							<td>Show</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for recruit in recruits %}
+							<tr>
+								<td>{{ recruit.user }}</td>
+								<td><a href="{{ path('recruiter_recruit_homepage', {id : recruit.id}) }}" class="btn">Show</a></td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table><!-- table -->
+			</div><!-- span6 -->
+			<div class="span6">
+				<h3>Latest <span class="orange">Employers</span></h3>
+				
+				<div class="well">
+					<dl>
+						<dt>Total</dt>
+						<dd>{{ total_employers }}</dd>
+						<dt>New this week</dt>
+						<dd>{{ total_employers_this_week }}</dd>
+					</dl>
+					
+					<div class="clear"></div>
+				</div><!-- well -->
+				
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td>Name</td>
+							<td>Show</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for employer in employers %}
+							<tr>
+								<td>{{ employer.employername }}</td>
+								<td><a href="{{ path('employers_show', {id : employer.id}) }}" class="btn">Show</a></td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table><!-- table -->
+			</div><!-- span6 -->
+		</div><!-- row -->
+	</div><!-- container -->
+{% endblock %}
